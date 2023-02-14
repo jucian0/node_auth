@@ -1,0 +1,18 @@
+version: "3"
+services:
+  mongodb:
+    container_name: mongodb
+    image: mongo:6.0
+    volumes:
+      - ~/mongo:/data/db
+    ports:
+      - "27017:27017"
+    environment:
+      - MONGO_INITDB_ROOT_USERNAME=app_user
+      - MONGO_INITDB_ROOT_PASSWORD=app_password
+      - MONGO_INITDB_DATABASE=admin
+    networks:
+      - node-webapp-network
+networks:
+  node-webapp-network:
+    driver: bridge
